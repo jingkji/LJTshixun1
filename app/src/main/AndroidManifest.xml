@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AActivity" />
+        <activity android:name=".BActivity" />
+        <activity android:name=".CActivity" />
+        <activity android:name=".DActivity" />
+        <activity android:name=".EActivity"></activity>
     </application>
 
 </manifest>

@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">LJTShixun1</string>
+    <string name="app_name">底部菜单项目实训</string>
+    <string name="main_news">消息</string>
+    <string name="main_home">首页</string>
+    <string name="more">更多</string>
+    <string name="main_found">发现</string>
+    <string name="main_self">个人</string>
 </resources>
