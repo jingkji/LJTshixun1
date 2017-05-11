@@ -2,6 +2,7 @@ package com.zsc.ljt.ljtshixun1;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +24,7 @@ import okhttp3.Response;
 
 public class CActivity extends AppCompatActivity {
 
-    private static final String TAG = "CActivity";
+    private SwipeRefreshLayout swipeRefresh;
     private ImageView bingPicImg;
     private TextView detail;
     private String mImagesUrl = "http://cn.bing.com";
@@ -34,19 +35,27 @@ public class CActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.everyday_image);
 
+        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
         bingPicImg = (ImageView) findViewById(R.id.bing_pic_img);
         detail = (TextView) findViewById(R.id.detail);
+        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String bingPic = prefs.getString("bing_pic", null);
         String bingContent = prefs.getString("bing_content", null);
-        if (bingPic != null && bingContent != null) {
+        if (bingPic != null) {
             Glide.with(this).load(bingPic).into(bingPicImg);
             detail.setText(bingContent);
         }
         else {
             loadBingPic();
         }
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadBingPic();
+            }
+        });
     }
 
     private void loadBingPic() {
@@ -56,6 +65,7 @@ public class CActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
                 Toast.makeText(CActivity.this, "拉取服务器信息失败", Toast.LENGTH_SHORT).show();
+                swipeRefresh.setRefreshing(false);
             }
 
             @Override
@@ -64,12 +74,14 @@ public class CActivity extends AppCompatActivity {
                 String[] responseData = handleBingResponse(responseAllText);
                 if (responseData != null) {
                     mImagesUrl += responseData[0];
-                    mContent = responseData[1];
+                    mContent = responseData[1].substring(0, responseData[1].indexOf("("));
                     sendOkHttpRequest(mImagesUrl, new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
                             e.printStackTrace();
                             Toast.makeText(CActivity.this, "图片加载失败", Toast.LENGTH_SHORT).show();
+                            swipeRefresh.setRefreshing(false);
+                            mImagesUrl = "http://cn.bing.com";
                         }
 
                         @Override
@@ -85,10 +97,14 @@ public class CActivity extends AppCompatActivity {
                                 public void run() {
                                     Glide.with(CActivity.this).load(bingPic).into(bingPicImg);
                                     detail.setText(mContent);
+                                    swipeRefresh.setRefreshing(false);
                                 }
                             });
+                            mImagesUrl = "http://cn.bing.com";
                         }
                     });
+                } else {
+                    Toast.makeText(CActivity.this, "服务器返回数据错误", Toast.LENGTH_SHORT).show();
                 }
             }
         });

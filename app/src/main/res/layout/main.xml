@@ -25,42 +25,38 @@
                     android:id="@+id/main_radio"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:layout_gravity="bottom"
                     android:gravity="center_vertical"
                     android:background="@drawable/maintab_toolbar_bg">
 
                     <RadioButton
                         android:id="@+id/radio_button0"
-                        android:layout_marginTop="2dp"
                         android:text="@string/main_home"
                         android:drawableTop="@drawable/icon_1_n"
+                        android:checked="true"
                         style="@style/main_tab_bottom"/>
 
                     <RadioButton
                         android:id="@+id/radio_button1"
-                        android:layout_marginTop="2dp"
                         android:text="@string/main_news"
                         android:drawableTop="@drawable/icon_2_n"
                         style="@style/main_tab_bottom"/>
 
                     <RadioButton
                         android:id="@+id/radio_button2"
-                        android:layout_marginTop="2dp"
                         android:text="@string/main_found"
                         android:drawableTop="@drawable/icon_3_n"
                         style="@style/main_tab_bottom"/>
 
                     <RadioButton
                         android:id="@+id/radio_button3"
-                        android:layout_marginTop="2dp"
                         android:text="@string/main_self"
                         android:drawableTop="@drawable/icon_4_n"
                         style="@style/main_tab_bottom"/>
 
                     <RadioButton
                         android:id="@+id/radio_button4"
-                        android:layout_marginTop="2dp"
                         android:text="@string/more"
                         android:drawableTop="@drawable/icon_5_n"
                         style="@style/main_tab_bottom"/>

@@ -2,7 +2,10 @@ package com.zsc.ljt.ljtshixun1;
 
 import android.app.TabActivity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -16,7 +19,15 @@ public class MainTabActivity extends TabActivity implements CompoundButton.OnChe
     private Intent mCIntent;
     private Intent mDIntent;
     private Intent mEIntent;
+    private RadioButton[] mRadioButtons;
 
+    private static final int SWIPE_MIN_DISTANCE = 120;
+    private static final int SWIPE_MAX_OFF_PATH = 250;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+
+    int currentView = 0;
+    private static int mMaxTabIndex = 4;
+    private GestureDetector mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +41,20 @@ public class MainTabActivity extends TabActivity implements CompoundButton.OnChe
         this.mDIntent = new Intent(this, DActivity.class);
         this.mEIntent = new Intent(this, EActivity.class);
 
-        ((RadioButton) findViewById(R.id.radio_button0)).setOnCheckedChangeListener(this);
-        ((RadioButton) findViewById(R.id.radio_button1)).setOnCheckedChangeListener(this);
-        ((RadioButton) findViewById(R.id.radio_button2)).setOnCheckedChangeListener(this);
-        ((RadioButton) findViewById(R.id.radio_button3)).setOnCheckedChangeListener(this);
-        ((RadioButton) findViewById(R.id.radio_button4)).setOnCheckedChangeListener(this);
+        mRadioButtons = new RadioButton[5];
 
+        mRadioButtons[0] = ((RadioButton) findViewById(R.id.radio_button0));
+        mRadioButtons[0].setOnCheckedChangeListener(this);
+        mRadioButtons[1] = ((RadioButton) findViewById(R.id.radio_button1));
+        mRadioButtons[1].setOnCheckedChangeListener(this);
+        mRadioButtons[2] = ((RadioButton) findViewById(R.id.radio_button2));
+        mRadioButtons[2].setOnCheckedChangeListener(this);
+        mRadioButtons[3] = ((RadioButton) findViewById(R.id.radio_button3));
+        mRadioButtons[3].setOnCheckedChangeListener(this);
+        mRadioButtons[4] = ((RadioButton) findViewById(R.id.radio_button4));
+        mRadioButtons[4].setOnCheckedChangeListener(this);
+
+        mGestureDetector = new GestureDetector(new MyGestureListener());
         setupIntent();
     }
 
@@ -61,10 +80,64 @@ public class MainTabActivity extends TabActivity implements CompoundButton.OnChe
             }
         }
     }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        mGestureDetector.onTouchEvent(ev);
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation==Configuration.ORIENTATION_LANDSCAPE){
+            setContentView(R.layout.main);
+            System.out.println("land");
+        }
+
+        if(newConfig.orientation==Configuration.ORIENTATION_PORTRAIT){
+            setContentView(R.layout.main);
+            System.out.println("port");
+        }
+    }
+
+    private class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            try {
+                if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
+                    return false;
+                // 从右到左滑动
+                if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE &&
+                        Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    if (currentView == mMaxTabIndex) {
+                        currentView = 0;
+                    } else {
+                        currentView++;
+                    }
+                    mTabHost.setCurrentTab(currentView);
+                } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE &&
+                        Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    if (currentView == 0) {
+                        currentView = mMaxTabIndex;
+                    } else {
+                        currentView--;
+                    }
+                    mTabHost.setCurrentTab(currentView);
+                }
+                mRadioButtons[currentView].setChecked(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+    }
+
     private void setupIntent() {
         this.mTabHost = getTabHost();
 
         TabHost localTabHost = this.mTabHost;
+        localTabHost.getTabWidget().setDividerDrawable(null);
 
         localTabHost.addTab(buildTabSpec("A_TAB", R.string.main_home, R.drawable.icon_1_n, this.mAIntent));
 

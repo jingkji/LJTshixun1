@@ -6,19 +6,20 @@
   android:layout_height="match_parent">
 <ImageView 
 	android:id="@+id/image" 
-	android:paddingRight="10px"
-	android:paddingTop="20px"
-	android:paddingBottom="20px"
+	android:paddingRight="10dp"
+	android:paddingTop="20dp"
+	android:paddingBottom="20dp"
+	android:maxWidth="62dp"
+	android:maxHeight="62dp"
 	android:adjustViewBounds="true"
-	android:maxWidth="72px"
-	android:maxHeight="72px"
 	android:layout_height="wrap_content" 
 	android:layout_width="wrap_content"/>  
  <TextView  
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content" 
-    android:padding="10px"
+    android:padding="10dp"
     android:layout_gravity="center"
     android:id="@+id/title"
+	android:textSize="18sp"
     />	 
 </LinearLayout>
