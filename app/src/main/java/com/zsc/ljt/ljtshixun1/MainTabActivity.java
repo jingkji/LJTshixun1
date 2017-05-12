@@ -13,7 +13,7 @@ import android.widget.TabHost;
 
 public class MainTabActivity extends TabActivity implements CompoundButton.OnCheckedChangeListener {
 
-    private TabHost mTabHost;
+    public TabHost mTabHost;
     private Intent mAIntent;
     private Intent mBIntent;
     private Intent mCIntent;

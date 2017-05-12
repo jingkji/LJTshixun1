@@ -5,4 +5,11 @@
     <string name="more">更多</string>
     <string name="main_found">发现</string>
     <string name="main_self">个人</string>
+    <string name="user">用户名</string>
+    <string name="passw">密码</string>
+    <string name="repwd">重复密码</string>
+    <string name="user_hint">你的用户名</string>
+    <string name="pwd_hint">填写密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
 </resources>

@@ -9,8 +9,8 @@
 	android:paddingRight="10dp"
 	android:paddingTop="20dp"
 	android:paddingBottom="20dp"
-	android:maxWidth="62dp"
-	android:maxHeight="62dp"
+	android:maxWidth="66dp"
+	android:maxHeight="66dp"
 	android:adjustViewBounds="true"
 	android:layout_height="wrap_content" 
 	android:layout_width="wrap_content"/>  

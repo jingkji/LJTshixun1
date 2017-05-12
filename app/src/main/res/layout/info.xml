@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 总框架实现灰色背景颜色 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#E0E0E0"
+              android:orientation="vertical">
+
+    <!-- 第二层LinearLayout实现一个大的信息板块(上面的部分) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <!-- 第三层LinearLayout实现一行数据板块(头像) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:gravity="center"
+                android:text="头像"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+            <!-- 第四层LinearLayout实现内容(值)居右对齐 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/head"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 这是一条灰色的分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="#E0E0E0"/>
+
+        <!-- 第三层LinearLayout实现一行数据板块(昵称) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:text="昵称"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+            <!-- 第四层LinearLayout实现内容(值)居右对齐 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Kiseki"
+                android:textColor="#C8C8C8"
+                android:textSize="18sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <!-- 这是一条灰色的分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="#E0E0E0"/>
+        <!-- 第三层LinearLayout实现一行数据板块(姓名) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:text="姓名"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+            <!-- 第四层LinearLayout实现内容(值)居右对齐 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="李景涛"
+                android:textColor="#C8C8C8"
+                android:textSize="18sp"/>
+                </LinearLayout>
+        </LinearLayout>
+        <!-- 这是一条灰色的分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="#E0E0E0"/>
+        <!-- 第三层LinearLayout实现一行数据板块(学号) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:text="学号"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+            <!-- 第四层LinearLayout实现内容(值)居右对齐 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2014030401027"
+                android:textColor="#C8C8C8"
+                android:textSize="18sp"/>
+                </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- 第二层LinearLayout实现一个大的信息板块(下面的部分) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#fff"
+        android:orientation="vertical">
+        <!-- 第三层LinearLayout实现一行数据板块(性别) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:text="性别"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+            <!-- 第四层LinearLayout实现内容(值)居右对齐 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="男"
+                android:textColor="#C8C8C8"
+                android:textSize="18sp"/>
+                </LinearLayout>
+        </LinearLayout>
+        <!-- 这是一条灰色的分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="#E0E0E0"/>
+        <!-- 第三层LinearLayout实现一行数据板块(籍贯) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:text="籍贯"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+            <!-- 第四层LinearLayout实现内容(值)居右对齐 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="广东 河源"
+                android:textColor="#C8C8C8"
+                android:textSize="18sp"/>
+                </LinearLayout>
+        </LinearLayout>
+        <!-- 第三层LinearLayout实现一行数据板块(个性签名) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:text="个性签名"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+            <!-- 第四层LinearLayout实现内容(值)居右对齐 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="？"
+                android:textColor="#C8C8C8"
+                android:textSize="18sp"/>
+                </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
